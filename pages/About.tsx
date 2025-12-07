@@ -41,7 +41,7 @@ const About: React.FC = () => {
               </p>
             </div>
             <div className="mt-8 pt-8 border-t border-white/10">
-              <span className="block font-serif text-xl text-white">Alex Mubell</span>
+              <span className="block font-serif text-xl text-white">Musa Soduim</span>
               <span className="text-sm text-brand-accent">Founder & Lead Coach</span>
             </div>
           </div>
