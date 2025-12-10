@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Mail, MapPin, Phone, Send } from 'lucide-react';
+import { Mail, MapPin, Send, MessageCircle } from 'lucide-react';
 import Button from '../components/Button';
 import { SERVICES } from '../constants';
 
@@ -41,40 +41,59 @@ const Contact: React.FC = () => {
             <div className="bg-white/5 p-8 rounded-2xl border border-white/5">
               <h3 className="text-xl font-serif text-white mb-6">Get in Touch</h3>
               <div className="space-y-6">
+                
+                <div className="flex items-start gap-4">
+                  <div className="p-3 bg-brand-accent/10 rounded-full text-brand-accent">
+                    <MessageCircle size={20} />
+                  </div>
+                  <div>
+                    <span className="block text-sm text-brand-muted mb-1">WhatsApp</span>
+                    <a 
+                      href="https://wa.me/2348025776657"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-white hover:text-brand-accent transition-colors font-medium"
+                    >
+                      +2348025776657
+                    </a>
+                  </div>
+                </div>
+
                 <div className="flex items-start gap-4">
                   <div className="p-3 bg-brand-accent/10 rounded-full text-brand-accent">
                     <Mail size={20} />
                   </div>
                   <div>
-                    <span className="block text-sm text-brand-muted mb-1">Email Us</span>
-                    <a href="mailto:hello@mubelleympathy.com" className="text-white hover:text-brand-accent transition-colors">hello@mubelleympathy.com</a>
+                    <span className="block text-sm text-brand-muted mb-1">Email</span>
+                    <a href="mailto:hello@mubelleympathy.com" className="text-white hover:text-brand-accent transition-colors">
+                      Lead Coach Bello Musa (Sodium)
+                    </a>
                   </div>
                 </div>
-                <div className="flex items-start gap-4">
-                  <div className="p-3 bg-brand-accent/10 rounded-full text-brand-accent">
-                    <Phone size={20} />
-                  </div>
-                  <div>
-                    <span className="block text-sm text-brand-muted mb-1">Call Us</span>
-                    <a href="tel:+15551234567" className="text-white hover:text-brand-accent transition-colors">+1 (555) 123-4567</a>
-                  </div>
-                </div>
+
                 <div className="flex items-start gap-4">
                   <div className="p-3 bg-brand-accent/10 rounded-full text-brand-accent">
                     <MapPin size={20} />
                   </div>
                   <div>
-                    <span className="block text-sm text-brand-muted mb-1">Visit Us</span>
-                    <span className="text-white">123 Serenity Lane,<br/>Wellness City, CA</span>
+                    <span className="block text-sm text-brand-muted mb-1">Location</span>
+                    <span className="text-white">Abuja, Nigeria</span>
                   </div>
                 </div>
+
               </div>
-            </div>
-            
-            <div className="p-8 bg-gradient-to-br from-brand-accent to-brand-accentHover rounded-2xl text-brand-darker">
-               <h4 className="font-serif text-xl mb-2 font-bold">Unsure which path is right?</h4>
-               <p className="text-sm mb-4 opacity-90">Book a free 15-min discovery call to discuss your specific needs.</p>
-               <button className="text-xs font-bold uppercase tracking-widest border-b border-brand-darker pb-1 hover:opacity-75">Book Discovery Call</button>
+              
+              <div className="mt-8 pt-6 border-t border-white/10">
+                 <a 
+                   href="https://wa.me/2348025776657"
+                   target="_blank"
+                   rel="noopener noreferrer"
+                   className="w-full flex items-center justify-center gap-2 bg-[#25D366] text-white py-3 rounded-full hover:bg-[#128C7E] transition-colors font-medium"
+                 >
+                   <MessageCircle size={18} />
+                   Message on WhatsApp
+                 </a>
+              </div>
             </div>
           </div>
 
@@ -91,7 +110,7 @@ const Contact: React.FC = () => {
               </div>
             ) : (
               <form onSubmit={handleSubmit} className="bg-white/5 p-8 md:p-10 rounded-2xl border border-white/5">
-                <h3 className="text-xl font-serif text-white mb-6">Send a Message / Request Booking</h3>
+                <h3 className="text-xl font-serif text-white mb-6">Send a Message</h3>
                 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
                   <div>
@@ -116,7 +135,7 @@ const Contact: React.FC = () => {
                       value={formData.phone}
                       onChange={handleChange}
                       className="w-full bg-brand-dark border border-white/10 rounded-lg px-4 py-3 text-white focus:border-brand-accent focus:ring-1 focus:ring-brand-accent outline-none transition-colors placeholder-white/20"
-                      placeholder="(555) 123-4567"
+                      placeholder="+234..."
                     />
                   </div>
                 </div>

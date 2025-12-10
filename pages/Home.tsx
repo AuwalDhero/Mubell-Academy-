@@ -1,7 +1,7 @@
 import React from 'react';
-import { ArrowRight, Brain, Wind, ShieldCheck, Activity } from 'lucide-react';
+import { ArrowRight, Brain, Wind, Activity } from 'lucide-react';
 import Button from '../components/Button';
-import { SERVICES, TESTIMONIALS } from '../constants';
+import { SERVICES, TESTIMONIALS, TRUSTED_BY } from '../constants';
 import { Link } from 'react-router-dom';
 
 const Home: React.FC = () => {
@@ -27,11 +27,11 @@ const Home: React.FC = () => {
               We bridge the gap between thinking and feeling for high-performers, partners, and parents.
             </p>
             <div className="flex flex-col sm:flex-row gap-4">
-              <Button to="/contact" variant="primary">
-                Start Your Transformation
-              </Button>
-              <Button to="/services" variant="outline">
+              <Button to="/programs" variant="primary">
                 Explore Programs
+              </Button>
+              <Button to="/audit" variant="outline">
+                Take EI Audit
               </Button>
             </div>
           </div>
@@ -40,6 +40,20 @@ const Home: React.FC = () => {
         {/* Scroll Indicator */}
         <div className="absolute bottom-10 left-1/2 transform -translate-x-1/2 animate-bounce hidden md:block text-brand-muted/50">
            <ArrowRight className="transform rotate-90" size={24} />
+        </div>
+      </section>
+      
+      {/* Trusted By Section */}
+      <section className="py-12 border-b border-white/5 bg-brand-darker">
+        <div className="container mx-auto px-6 md:px-12">
+          <p className="text-center text-brand-muted text-sm uppercase tracking-widest mb-8">Trusted by Organizations Including</p>
+          <div className="flex flex-wrap justify-center gap-x-12 gap-y-6 opacity-70">
+            {TRUSTED_BY.map((org, index) => (
+              <span key={index} className="text-white/60 font-serif font-medium text-lg text-center hover:text-white transition-colors">
+                {org}
+              </span>
+            ))}
+          </div>
         </div>
       </section>
 
@@ -83,44 +97,7 @@ const Home: React.FC = () => {
         </div>
       </section>
 
-      {/* Methodology / About Preview */}
-      <section className="py-24 relative overflow-hidden">
-        <div className="container mx-auto px-6 md:px-12 flex flex-col md:flex-row items-center gap-16">
-          <div className="w-full md:w-1/2 relative">
-             <div className="aspect-[4/5] rounded-2xl overflow-hidden relative">
-               <img 
-                 src="https://picsum.photos/600/800?grayscale" 
-                 alt="Calm abstract nature" 
-                 className="w-full h-full object-cover opacity-80 hover:opacity-100 transition-opacity duration-700"
-               />
-               <div className="absolute inset-0 bg-brand-darker/20"></div>
-             </div>
-             {/* Decorative element */}
-             <div className="absolute -bottom-6 -right-6 w-32 h-32 border-r-2 border-b-2 border-brand-accent/50 rounded-br-3xl"></div>
-          </div>
-          
-          <div className="w-full md:w-1/2">
-            <h2 className="text-3xl md:text-4xl font-serif text-white mb-6">Practical Science. <br/>Real Mastery.</h2>
-            <p className="text-brand-muted text-lg mb-6 leading-relaxed">
-              We don't do "fluff." At MEA, we combine neuroscience-backed techniques with deep compassionate inquiry. 
-            </p>
-            <p className="text-brand-muted text-lg mb-8 leading-relaxed">
-              Our approach isn't about suppressing emotions—it's about regulating them. We teach you the physics of your feelings so you can navigate high-pressure boardrooms and delicate living room conversations with equal grace.
-            </p>
-            <ul className="space-y-4 mb-8">
-              {['Trauma-Informed Coaching', 'Somatic Awareness', 'Cognitive Reframing'].map((item) => (
-                <li key={item} className="flex items-center gap-3 text-white">
-                  <ShieldCheck size={20} className="text-brand-accent" />
-                  {item}
-                </li>
-              ))}
-            </ul>
-            <Button to="/about" variant="outline">Learn Our Philosophy</Button>
-          </div>
-        </div>
-      </section>
-
-      {/* Services Preview */}
+      {/* Programs Preview */}
       <section className="py-24 bg-brand-darker">
         <div className="container mx-auto px-6 md:px-12">
           <div className="flex justify-between items-end mb-12">
@@ -128,8 +105,8 @@ const Home: React.FC = () => {
               <h2 className="text-3xl md:text-4xl font-serif text-white mb-2">Our Programs</h2>
               <p className="text-brand-muted">Tailored pathways to emotional freedom.</p>
             </div>
-            <Link to="/services" className="hidden md:flex items-center gap-2 text-brand-accent hover:text-white transition-colors">
-              View All <ArrowRight size={16} />
+            <Link to="/programs" className="hidden md:flex items-center gap-2 text-brand-accent hover:text-white transition-colors">
+              View All Programs <ArrowRight size={16} />
             </Link>
           </div>
 
@@ -149,28 +126,32 @@ const Home: React.FC = () => {
           </div>
           
           <div className="mt-8 md:hidden text-center">
-             <Link to="/services" className="inline-flex items-center gap-2 text-brand-accent hover:text-white transition-colors">
+             <Link to="/programs" className="inline-flex items-center gap-2 text-brand-accent hover:text-white transition-colors">
               View All Programs <ArrowRight size={16} />
             </Link>
           </div>
         </div>
       </section>
       
-      {/* Testimonial Snippet */}
+      {/* Testimonials */}
       <section className="py-24 bg-gradient-to-b from-brand-darker to-brand-dark border-t border-white/5">
-        <div className="container mx-auto px-6 md:px-12 text-center">
-           <div className="max-w-3xl mx-auto">
-             <div className="mb-8 text-brand-accent opacity-50">
-               <svg width="40" height="40" viewBox="0 0 24 24" fill="currentColor">
-                 <path d="M14.017 21L14.017 18C14.017 16.896 14.913 16 16.017 16H19.017C19.569 16 20.017 15.552 20.017 15V9C20.017 8.448 19.569 8 19.017 8H15.017C14.465 8 14.017 8.448 14.017 9V11C14.017 11.552 13.569 12 13.017 12H12.017V5H22.017V15C22.017 18.314 19.331 21 16.017 21H14.017ZM5.01697 21L5.01697 18C5.01697 16.896 5.91297 16 7.01697 16H10.017C10.569 16 11.017 15.552 11.017 15V9C11.017 8.448 10.569 8 10.017 8H6.01697C5.46497 8 5.01697 8.448 5.01697 9V11C5.01697 11.552 4.56897 12 4.01697 12H3.01697V5H13.017V15C13.017 18.314 10.331 21 7.01697 21H5.01697Z" />
-               </svg>
-             </div>
-             <blockquote className="text-2xl md:text-3xl font-serif text-white mb-8 italic">
-               "{TESTIMONIALS[0].quote}"
-             </blockquote>
-             <cite className="not-italic text-brand-muted font-medium">
-               — {TESTIMONIALS[0].author}, <span className="text-brand-accent">{TESTIMONIALS[0].role}</span>
-             </cite>
+        <div className="container mx-auto px-6 md:px-12">
+           <h2 className="text-3xl md:text-4xl font-serif text-white mb-12 text-center">Stories of Transformation</h2>
+           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+             {TESTIMONIALS.map((t) => (
+               <div key={t.id} className="bg-white/5 p-8 rounded-2xl relative">
+                  <div className="text-brand-accent opacity-30 absolute top-4 left-4">
+                     <svg width="32" height="32" viewBox="0 0 24 24" fill="currentColor">
+                       <path d="M14.017 21L14.017 18C14.017 16.896 14.913 16 16.017 16H19.017C19.569 16 20.017 15.552 20.017 15V9C20.017 8.448 19.569 8 19.017 8H15.017C14.465 8 14.017 8.448 14.017 9V11C14.017 11.552 13.569 12 13.017 12H12.017V5H22.017V15C22.017 18.314 19.331 21 16.017 21H14.017ZM5.01697 21L5.01697 18C5.01697 16.896 5.91297 16 7.01697 16H10.017C10.569 16 11.017 15.552 11.017 15V9C11.017 8.448 10.569 8 10.017 8H6.01697C5.46497 8 5.01697 8.448 5.01697 9V11C5.01697 11.552 4.56897 12 4.01697 12H3.01697V5H13.017V15C13.017 18.314 10.331 21 7.01697 21H5.01697Z" />
+                     </svg>
+                  </div>
+                  <p className="text-brand-muted text-sm italic leading-relaxed mb-6 pt-6">"{t.quote}"</p>
+                  <div className="mt-auto">
+                    <p className="text-white font-serif">{t.author}</p>
+                    <p className="text-xs text-brand-accent uppercase tracking-wider">{t.role}</p>
+                  </div>
+               </div>
+             ))}
            </div>
         </div>
       </section>
@@ -185,11 +166,16 @@ const Home: React.FC = () => {
                <div className="relative z-10">
                  <h2 className="text-3xl md:text-5xl font-serif text-brand-darker mb-6">Ready to Rewrite Your Emotional Script?</h2>
                  <p className="text-brand-darker/80 text-lg mb-8 max-w-2xl mx-auto">
-                   Book your free 15-minute discovery call. No pressure, just a conversation about where you are and where you want to be.
+                   Book your free 15-minute discovery call. No pressure, just a conversation.
                  </p>
-                 <Button to="/contact" className="bg-brand-darker text-white hover:bg-white hover:text-brand-darker shadow-2xl">
-                   Book Your Discovery Call
-                 </Button>
+                 <a 
+                   href="https://wa.me/2348025776657" 
+                   target="_blank" 
+                   rel="noopener noreferrer"
+                   className="inline-flex items-center justify-center px-8 py-4 rounded-full font-medium transition-all duration-300 text-base tracking-wide bg-brand-darker text-white hover:bg-white hover:text-brand-darker shadow-2xl"
+                 >
+                   Message Us on WhatsApp
+                 </a>
                </div>
             </div>
          </div>

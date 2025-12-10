@@ -8,7 +8,10 @@ import { NavItem } from '../types';
 const NAV_ITEMS: NavItem[] = [
   { label: 'Home', path: '/' },
   { label: 'About', path: '/about' },
+  { label: 'Programs', path: '/programs' },
   { label: 'Services', path: '/services' },
+  { label: 'Media', path: '/media' },
+  { label: 'EI Audit', path: '/audit' },
   { label: 'Contact', path: '/contact' },
 ];
 
@@ -42,7 +45,7 @@ const Navbar: React.FC = () => {
         </Link>
 
         {/* Desktop Nav */}
-        <div className="hidden md:flex items-center gap-8">
+        <div className="hidden lg:flex items-center gap-6 xl:gap-8">
           {NAV_ITEMS.map((item) => (
             <Link 
               key={item.path} 
@@ -61,7 +64,7 @@ const Navbar: React.FC = () => {
 
         {/* Mobile Toggle */}
         <button 
-          className="md:hidden z-50 text-white focus:outline-none"
+          className="lg:hidden z-50 text-white focus:outline-none"
           onClick={() => setIsOpen(!isOpen)}
           aria-label="Toggle Menu"
         >
@@ -70,7 +73,7 @@ const Navbar: React.FC = () => {
 
         {/* Mobile Menu Overlay */}
         <div 
-          className={`fixed inset-0 bg-brand-darker flex flex-col items-center justify-center gap-8 transition-transform duration-300 ease-in-out md:hidden ${
+          className={`fixed inset-0 bg-brand-darker flex flex-col items-center justify-center gap-6 transition-transform duration-300 ease-in-out lg:hidden ${
             isOpen ? 'translate-x-0 opacity-100' : 'translate-x-full opacity-0 pointer-events-none'
           }`}
         >
@@ -78,14 +81,14 @@ const Navbar: React.FC = () => {
             <Link 
               key={item.path} 
               to={item.path}
-              className={`text-2xl font-serif transition-colors hover:text-brand-accent ${
+              className={`text-xl font-serif transition-colors hover:text-brand-accent ${
                 location.pathname === item.path ? 'text-brand-accent' : 'text-white'
               }`}
             >
               {item.label}
             </Link>
           ))}
-          <Button variant="primary" to="/contact" className="mt-8">
+          <Button variant="primary" to="/contact" className="mt-4">
             Book a Discovery Call
           </Button>
         </div>

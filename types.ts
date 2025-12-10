@@ -29,3 +29,26 @@ export interface EventItem {
   description: string;
   location: string;
 }
+
+export interface Program {
+  id: string;
+  title: string;
+  shortSummary: string;
+  description: string[];
+  benefits: string[];
+  targetAudience?: string;
+}
+
+export interface MediaItem {
+  id: string;
+  title: string;
+  url: string;
+  type: 'video' | 'article' | 'podcast';
+  source: string;
+}
+
+export interface AuditSection {
+  id: string;
+  title: string;
+  questions: string[];
+}
